@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Will You Be My Valentine?</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     * {
@@ -24,7 +24,6 @@
       width: 100vw;
       padding: 40px 20px;
       text-align: center;
-      animation: fade 0.6s ease-in-out;
     }
 
     .slide.active {
@@ -43,17 +42,11 @@
       font-size: 1.1rem;
     }
 
-    img {
-      max-width: 280px;
+    img, video {
+      max-width: 300px;
       border-radius: 18px;
       margin: 15px 0;
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
-
-    video {
-      max-width: 320px;
-      border-radius: 18px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     }
 
     .buttons {
@@ -70,101 +63,117 @@
       color: white;
       font-size: 1rem;
       cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
     }
 
     button:hover {
       background: #e63956;
-      transform: scale(1.05);
     }
 
-    @keyframes fade {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Floating hearts */
     .heart {
       position: absolute;
       bottom: -20px;
       color: rgba(255, 77, 109, 0.7);
-      font-size: 18px;
       animation: floatUp 6s linear infinite;
     }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-110vh);
-        opacity: 0;
-      }
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-110vh); opacity: 0; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- SLIDE 1 -->
   <div class="slide active">
     <h1>Hey you ❤️</h1>
-    <p>
-      I made this little thing because I wanted to ask you something
-      in a way that felt special… just like you.
-    </p>
+    <p>I made this just for you.</p>
     <div class="buttons">
       <button onclick="nextSlide()">Next 💌</button>
     </div>
   </div>
 
-  <!-- SLIDE 2 (PHOTO 1) -->
   <div class="slide">
-    <h2>One of my favorite memories</h2>
-    <img src="photo1.jpg" alt="Photo 1">
-    <p>✨ Replace this caption with something meaningful ✨</p>
+    <h2>One of my favorites</h2>
+    <img src="photo1.jpg">
+    <p>Put your caption here</p>
     <div class="buttons">
       <button onclick="prevSlide()">Back</button>
       <button onclick="nextSlide()">Next</button>
     </div>
   </div>
 
-  <!-- SLIDE 3 (PHOTO 2) -->
   <div class="slide">
     <h2>This always makes me smile</h2>
-    <img src="photo2.jpg" alt="Photo 2">
-    <p>Another cute caption goes here 💕</p>
+    <img src="photo2.jpg">
+    <p>Another caption</p>
     <div class="buttons">
       <button onclick="prevSlide()">Back</button>
       <button onclick="nextSlide()">Next</button>
     </div>
   </div>
 
-  <!-- SLIDE 4 (PHOTO 3) -->
-  <div class="slide">
-    <h2>Us 🫶</h2>
-    <img src="photo3.jpg" alt="Photo 3">
-    <p>You can write something sweet or funny here</p>
-    <div class="buttons">
-      <button onclick="prevSlide()">Back</button>
-      <button onclick="nextSlide()">Next</button>
-    </div>
-  </div>
-
-  <!-- SLIDE 5 (PHOTO 4) -->
-  <div class="slide">
-    <h2>Still my favorite</h2>
-    <img src="photo4.jpg" alt="Photo 4">
-    <p>This site is already cute but this photo makes it better</p>
-    <div class="buttons">
-      <button onclick="prevSlide()">Back</button>
-      <button onclick="nextSlide()">Next</button>
-    </div>
-  </div>
-
-  <!-- SLIDE 6 (VIDEO) -->
   <div class="slide">
     <h2>I wanted you to see this 🎥</h2>
+    <video controls>
+      <source src="your-video.mp4" type="video/mp4">
+    </video>
+    <div class="buttons">
+      <button onclick="prevSlide()">Back</button>
+      <button onclick="nextSlide()">Next</button>
+    </div>
+  </div>
 
-    <!-- 🔽
+  <div class="slide">
+    <h1>So… 💘</h1>
+    <h2>Will you be my Valentine?</h2>
+    <div class="buttons">
+      <button onclick="alert('YAY ❤️')">Yes 💖</button>
+      <button onclick="alert('Still yes 😌')">Yes</button>
+    </div>
+  </div>
+
+  <script>
+    let slides;
+    let currentSlide = 0;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      slides = document.querySelectorAll(".slide");
+      showSlide(currentSlide);
+
+      setInterval(createHeart, 500);
+    });
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove("active"));
+      slides[index].classList.add("active");
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        showSlide(currentSlide);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        showSlide(currentSlide);
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = 12 + Math.random() * 20 + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+  </script>
+
+</body>
+</html>
