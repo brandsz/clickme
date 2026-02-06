@@ -84,6 +84,11 @@
 </head>
 
 <body>
+<body>
+
+  <audio id="heavy.mp3" loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
 
   <div class="slide active">
     <h1>hola alvaro 😘</h1>
@@ -152,11 +157,18 @@
     }
 
     function nextSlide() {
-      if (currentSlide < slides.length - 1) {
-        currentSlide++;
-        showSlide(currentSlide);
-      }
-    }
+  const music = document.getElementById("bgMusic");
+
+  if (music && music.paused) {
+    music.play();
+  }
+
+  if (currentSlide < slides.length - 1) {
+    currentSlide++;
+    showSlide(currentSlide);
+  }
+}
+
 
     function prevSlide() {
       if (currentSlide > 0) {
