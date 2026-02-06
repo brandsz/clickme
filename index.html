@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Will You Be My Valentine?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #ffdde1, #fff1f5);
+      overflow: hidden;
+      color: #7a1f2b;
+    }
+
+    .slide {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      padding: 40px 20px;
+      text-align: center;
+      animation: fade 0.6s ease-in-out;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1, h2 {
+      margin-bottom: 15px;
+    }
+
+    p {
+      max-width: 600px;
+      font-size: 1.1rem;
+    }
+
+    img {
+      max-width: 280px;
+      border-radius: 18px;
+      margin: 15px 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    video {
+      max-width: 320px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .buttons {
+      margin-top: 25px;
+      display: flex;
+      gap: 15px;
+    }
+
+    button {
+      background: #ff4d6d;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 25px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    button:hover {
+      background: #e63956;
+      transform: scale(1.05);
+    }
+
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      color: rgba(255, 77, 109, 0.7);
+      font-size: 18px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SLIDE 1 -->
+  <div class="slide active">
+    <h1>Hey you ❤️</h1>
+    <p>
+      I made this little thing because I wanted to ask you something
+      in a way that felt special… just like you.
+    </p>
+    <div class="buttons">
+      <button onclick="nextSlide()">Next 💌</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 (PHOTO 1) -->
+  <div class="slide">
+    <h2>One of my favorite memories</h2>
+    <img src="photo1.jpg" alt="Photo 1">
+    <p>✨ Replace this caption with something meaningful ✨</p>
+    <div class="buttons">
+      <button onclick="prevSlide()">Back</button>
+      <button onclick="nextSlide()">Next</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 (PHOTO 2) -->
+  <div class="slide">
+    <h2>This always makes me smile</h2>
+    <img src="photo2.jpg" alt="Photo 2">
+    <p>Another cute caption goes here 💕</p>
+    <div class="buttons">
+      <button onclick="prevSlide()">Back</button>
+      <button onclick="nextSlide()">Next</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 (PHOTO 3) -->
+  <div class="slide">
+    <h2>Us 🫶</h2>
+    <img src="photo3.jpg" alt="Photo 3">
+    <p>You can write something sweet or funny here</p>
+    <div class="buttons">
+      <button onclick="prevSlide()">Back</button>
+      <button onclick="nextSlide()">Next</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 (PHOTO 4) -->
+  <div class="slide">
+    <h2>Still my favorite</h2>
+    <img src="photo4.jpg" alt="Photo 4">
+    <p>This site is already cute but this photo makes it better</p>
+    <div class="buttons">
+      <button onclick="prevSlide()">Back</button>
+      <button onclick="nextSlide()">Next</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 (VIDEO) -->
+  <div class="slide">
+    <h2>I wanted you to see this 🎥</h2>
+
+    <!-- 🔽
